@@ -1,3 +1,34 @@
+function [huffman_structure] = create_huffman(M, pM, B)
+    %creates labels with all possible combinations, and his respectives
+    %probabilities
+	a = string(M);
+    p = pM;
+    for i = 1:B-1
+        A = combinations(a,M);
+        a = join(A{:,:},"");
+        %t = table2array(A);
+        P = combinations(p,pM);
+        p = table2array(P);
+        p = p(:,1).*p(:,2);
+    end
+    if not(length(a) == length(p))
+        disp(['Length of the combinations unequal']);
+        return;
+    end
+    %sort by min. prob and store in dict  
+    [p_s,i] = sort(p); 
+    l_s = a(i);
+    
+    h = huffman_tree(l_s,p_s);
+    
+    %base_elem = length(M)^B;
+    %create tree 
+    %upward branches 0 , downward branches 1 
+    
+    huffman_structure = struct('M' , M, 'B' ,B ,'h',h);
+    
+end
+
 %basic struct
 function h = huffman_tree(l_s,p_s)
     
@@ -51,45 +82,11 @@ function node = makeNode(sym,prob,left,right)
 end
 
 
-%queues wikipedia 
-function [huffman_structure,l_s,p_s] = create_huffman(M, pM, B)
-    %creates labels with all possible combinations, and his respectives
-    %probabilities
-	a = string(M);
-    p = pM;
-    for i = 1:B-1
-        A = combinations(a,M);
-        a = join(A{:,:},"");
-        %t = table2array(A);
-        P = combinations(p,pM);
-        p = table2array(P);
-        p = p(:,1).*p(:,2);
-    end
-    if not(length(a) == length(p))
-        disp(['Length of the combinations unequal']);
-        return;
-    end
-    %sort by min. prob and store in dict  
-    [p_s,i] = sort(p); 
-    l_s = a(i);
-    
-    h = huffman_tree(l_s,p_s);
-    
-    %base_elem = length(M)^B;
-    
-    
-    
-    
-    %create tree 
-    %upward branches 0 , downward branches 1 
-    
-    huffman_structure = struct('M' , M, 'B' ,B ,'t',h);
-    
-end
 
-tic;        
-b = 16;
-[h,l_s,p_s] = create_huffman(["a" ,"b" , "c" ,"d" ], [0.1 0.4 0.3 0.2], b);
-elapsed = toc;                   % detiene y devuelve el tiempo en segundos
-fprintf('Tiempo de ejecución para B = %f: %.6f segundos\n',b, elapsed);
+
+%tic;        
+%b = 8;
+%[h,l_s,p_s] = create_huffman([1 2 3 4], [0.1 0.4 0.3 0.2], b);
+%ft =  toc;
+%fprintf('Tiempo de ejecución para B = %d: %.6f segundos\n',b, ft);
 
