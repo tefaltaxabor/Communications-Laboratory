@@ -11,10 +11,11 @@ function [huffman_structure] = create_huffman(M, pM, B)
         p = table2array(P);
         p = p(:,1).*p(:,2);
     end
-    if not(length(a) == length(p))
-        disp(['Length of the combinations unequal']);
-        return;
+
+    if numel(a) ~= numel(p)
+        error('Length of the combinations unequal: |a|=%d, |p|=%d', numel(a), numel(p));
     end
+    
     %sort by min. prob and store in dict  
     [p_s,i] = sort(p); 
     l_s = a(i);
@@ -57,7 +58,7 @@ function h = huff_r(nodes)
     function n = popmin()
         ren1 = remaining_in_q(q_1,h1);
         ren2 = remaining_in_q(q_2,h2);
-        if ren1() > 0 && (ren2 == 0 || q_1{h1}.p <= q_2{h2}.p)
+        if ren1 > 0 && (ren2 == 0 || q_1{h1}.p <= q_2{h2}.p)
             n = q_1{h1}; h1 = h1 + 1;
         else
             n = q_2{h2}; h2 = h2 + 1;
