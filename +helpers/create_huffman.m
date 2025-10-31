@@ -3,6 +3,9 @@ function [huffman_structure] = create_huffman(M, pM, B)
     %probabilities
 	a = string(M);
     p = pM;
+    if not(sum(p) == 1)
+        return;
+    end
     for i = 1:B-1
         A = combinations(a,M);
         a = join(A{:,:},"");
