@@ -23,9 +23,9 @@ function [output] = huffman(huffman_structure, input_seq)
     out = uint8([]);
     idx = 1;
     for k = 1:num_syms
-        sym = input_seq(idx:idx+B-1)+ '0';  
+        sym = char(input_seq(idx:idx+B-1) + '0'); 
         idx = idx + B;
-        if ~isKey(map_global, convertStringsToChars(sym))
+        if ~isKey(map_global, sym)
             error('Símbolo no encontrado en el diccionario: "%s"', sym);
         end
         out = [out, map_global(sym)];
@@ -41,7 +41,7 @@ function isLeaf = isLeaf(root)
     end
 end
 
-output_1212  = huffman(huffman_dms,out)
+output_1212  = huffman(huffman_dms,uint8([0 1 0 2 0 1 2 0 0 0 0 1 0 2 0 ]))
 
 
 

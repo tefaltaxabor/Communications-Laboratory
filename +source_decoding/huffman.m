@@ -12,7 +12,7 @@ function [output] = huffman(huffman_structure,input_seq)
         end
         
         if isLeaf(node)
-            output_seq = [output_seq, uint8(node.s)];
+            output_seq = [output_seq, uint8(node.s-'0')];
             node = root;
         end
     end
