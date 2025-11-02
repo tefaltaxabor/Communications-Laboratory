@@ -1,5 +1,5 @@
 function save_huffmam_statistic(text_path)
-    output_path = 'files/huffman_text.mat';
+    output_path = 'huffman_text.mat';
     %create empirical distribution of the text
     txt = fileread(text_path);
     bytes = uint8(txt(:));
@@ -8,8 +8,15 @@ function save_huffmam_statistic(text_path)
     counts = counts + 1;
     prob = counts / sum(counts);
     %save huffman structure
-    alphabet = uint8(0:255).';
+    alphabet = uint16(0:255)';
+
+    %used = find(counts > 0) - 1;                             % valores usados (0..255)
+    %prob = counts(counts > 0) / sum(counts);                 % probs solo de usados
+    %alphabet = char(uint8(used));
+
+
     %B = 1
     huffman_structure = helpers.create_huffman(alphabet,prob,1);
-    save(fullfile('files','huffman_text.mat'), 'huffman_structure');
+    save(fullfile('files',output_path), 'huffman_structure');
 end
+

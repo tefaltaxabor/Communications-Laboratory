@@ -3,7 +3,8 @@ function [huffman_structure] = create_huffman(M, pM, B)
     %probabilities
 	a = string(M);
     p = pM;
-    if not(sum(p) == 1)
+    if not(int8(sum(p)) == 1)
+        disp('corregir')
         return;
     end
     for i = 1:B-1

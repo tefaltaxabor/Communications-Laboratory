@@ -41,7 +41,7 @@ function isLeaf = isLeaf(root)
     end
 end
 
-%output_1212  = huffman(huffman_dms,uint8([0 1 0 2 0 1 2 0 0 0 0 1 0 2 0 ]))
+%output_1212  = huffman(huffman_structure,uint8([0 1 0 2 0 1 2 0 0 0 0 1 0 2 0 ]))
 
 
 
