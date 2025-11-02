@@ -1,5 +1,5 @@
 function [output] = huffman(huffman_structure, input_seq) 
-    root = huffman_structure.h; %root = huffman_tree
+    root = huffman_structure.huffman_structure; %root = huffman_tree
     B    = huffman_structure.B;
     map_global = containers.Map("KeyType",'char',"ValueType",'any');
     function r(root,prefix)
@@ -41,7 +41,7 @@ function isLeaf = isLeaf(root)
     end
 end
 
-output_1212  = huffman(huffman_dms,uint8([0 1 0 2 0 1 2 0 0 0 0 1 0 2 0 ]))
+%output_1212  = huffman(huffman_dms,uint8([0 1 0 2 0 1 2 0 0 0 0 1 0 2 0 ]))
 
 
 

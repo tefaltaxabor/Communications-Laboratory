@@ -1,5 +1,5 @@
 function [output] = huffman(huffman_structure,input_seq)
-    root = huffman_structure.h; 
+    root = huffman_structure.huffman_structure; 
     node  = root;
     output_seq  = uint8([]);
     for i = 1:length(input_seq)
