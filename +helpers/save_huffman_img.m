@@ -3,7 +3,6 @@ function save_huffmam_img()
     param.source.filename = 'files/lena.pgm';
     param = source.initialize(param); % i n i t s o u r c e
     output_path = 'huffman_img.mat';
-
     img = reshape(param.source.sequence, ...
         [param.source.image.width, param.source.image.height ])';
     
@@ -19,9 +18,7 @@ function save_huffmam_img()
     end
     
     %create empirical distribution of the img
-    
-    txt = fileread(text_path);
-    bytes = uint8(txt(:));
+    bytes = uint8(img(:));
     
     %stosi
     
@@ -31,7 +28,7 @@ function save_huffmam_img()
     
     %save huffman structure
     
-    alphabet = char(uint8(0:255))';
+    alphabet = uint8(0:255)';
     
     %B = 1
     

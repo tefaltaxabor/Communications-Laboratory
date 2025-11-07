@@ -4,16 +4,16 @@ function save_huffmam_statistic(text_path)
     txt = fileread(text_path);
     bytes = uint8(txt(:));
     %stosi
-    counts = accumarray(double(bytes)+1, 1, [256 1]);
-    counts = counts + 1;
+    counts = accumarray(double(bytes)+ 1, 1, [256 1]);
+    %used = find(counts > 0);                 % índices en 1..256
+    %prob = counts(used) / sum(counts(used)); % probs solo de usados
+    %alphabet = char(uint8(used - 1)).';      % bytes reales 0..255
+
     prob = counts / sum(counts);
     %save huffman structure
-    alphabet = uint16(0:255)';
+    alphabet = char(uint8(0:255)).';
 
-    %used = find(counts > 0) - 1;                             % valores usados (0..255)
-    %prob = counts(counts > 0) / sum(counts);                 % probs solo de usados
-    %alphabet = char(uint8(used));
-
+   
 
     %B = 1
     huffman_structure = helpers.create_huffman(alphabet,prob,1);

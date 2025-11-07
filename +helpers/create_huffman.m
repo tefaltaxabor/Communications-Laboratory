@@ -1,7 +1,7 @@
 function [huffman_structure] = create_huffman(M, pM, B)
     %creates labels with all possible combinations, and his respectives
     %probabilities
-	a = string(M);
+	a = string(M);   % convierte 'ABC' -> {"A","B","C"} -> ["A","B","C"]
     p = pM;
     if not(int8(sum(p)) == 1)
         disp('corregir')
@@ -70,6 +70,6 @@ function node = makeNode(sym,prob,left,right)
 end
 %tic;        
 %b = 8;
-%[h,l_s,p_s] = create_huffman([1 2 3 4], [0.1 0.4 0.3 0.2], b);
+%huffman_structure= create_huffman(uint8([0 1 2]), [0.27 0.46 0.27], 2);
 %ft =  toc;
 %fprintf('Tiempo de ejecución para B = %d: %.6f segundos\n',b, ft);

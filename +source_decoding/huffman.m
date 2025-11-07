@@ -1,7 +1,7 @@
 function [output] = huffman(huffman_structure,input_seq)
     root = huffman_structure.huffman_structure; 
     node  = root;
-    output_seq  = uint8([]);
+    decode_c  = {};
     for i = 1:length(input_seq)
         if input_seq(i) == 0 
             node = node.l;
@@ -10,13 +10,13 @@ function [output] = huffman(huffman_structure,input_seq)
         else
             error('Invalid bit in input sequence');
         end
-        
+        %too slow O(n²)
         if isLeaf(node)
-            output_seq = [output_seq, uint8(node.s-'0')];
+            decode_c{end+1} = uint8(char(node.s)-'0');
             node = root;
         end
     end
-    output = output_seq;
+    output = [decode_c{:}];
     
 end
 

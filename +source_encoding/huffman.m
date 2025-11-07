@@ -20,17 +20,22 @@ function [output] = huffman(huffman_structure, input_seq)
     num_syms = length(input_seq) / B;
 
     disp(keys(map_global));
-    out = uint8([]);
+    map_global
+    chunks = cell(1,num_syms);
     idx = 1;
     for k = 1:num_syms
         sym = char(input_seq(idx:idx+B-1) + '0'); 
         idx = idx + B;
+        
+        %now O(n)
+       
         if ~isKey(map_global, sym)
-            error('Símbolo no encontrado en el diccionario: "%s"', sym);
+            %error('Símbolo no encontrado en el diccionario: "%s"', sym);
+            continue;
         end
-        out = [out, map_global(sym)];
+        chunks{k} = map_global(sym);
     end
-    output = out;
+    output = uint8([chunks{:}]);
 end
 
 function isLeaf = isLeaf(root)
@@ -41,7 +46,7 @@ function isLeaf = isLeaf(root)
     end
 end
 
-%output_1212  = huffman(huffman_structure,uint8([0 1 0 2 0 1 2 0 0 0 0 1 0 2 0 ]))
+%output_1212  = huffman(huffman_structure,uint8('1234312'))
 
 
 
