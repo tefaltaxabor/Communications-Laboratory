@@ -20,7 +20,7 @@ function save_huffmam_img()
     end
     
     %create empirical distribution of the img
-    bytes = uint8(img(:));
+    bytes = uint8(img_rec(:));
     
     %stosi
     

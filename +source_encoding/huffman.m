@@ -43,8 +43,11 @@ function [output] = huffman(huffman_structure, input_seq)
     end
     num_syms = length(input_seq) / B;
 
-    disp(keys(map_global));
-    disp(map_global.values)
+    %k = keys(map_global);
+    %v = map_global.values;
+    %for i = 1:min(10, numel(k))
+    %    fprintf('Simbolo %d -> código (len %d)\n', k{i}, numel(v{i}));
+    %end
     chunks = cell(1,num_syms);
     idx = 1;
     for k = 1:num_syms
@@ -88,6 +91,6 @@ function isLeaf = isLeaf(root)
     end
 end
 
-%output_1212  = huffman(huffman_structure,diff_seq);
+%output_1212  = huffman(huffman_structure,uint8([162 162 0 1 162]));
 
 
