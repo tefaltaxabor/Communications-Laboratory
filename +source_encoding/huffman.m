@@ -45,17 +45,6 @@ function [output] = huffman(huffman_structure, input_seq)
 
     disp(keys(map_global));
     disp(map_global.values)
-    disp('%%%%%%%%%%%%%%%%%%%')
-
-    disp(map_global(uint32(1)))
-    disp(map_global(uint32(6)))
-    disp(map_global(uint32(2)))
-
-    disp(map_global(uint32(162)))
-    
-
-    disp('%%%%%%%%%%%%%%%%%%%')
-    disp('%%%%%%%%%%%%%%%%%%%')
     chunks = cell(1,num_syms);
     idx = 1;
     for k = 1:num_syms

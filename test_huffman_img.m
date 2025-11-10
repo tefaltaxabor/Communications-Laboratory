@@ -2,7 +2,7 @@ clear
 
 % source parameter
 param.source.type = 'image';
-param.source.filename = 'files/lena.pgm';
+param.source.filename = 'files/peppers.pgm';
 
 
 % source coding parameter
