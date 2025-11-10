@@ -25,7 +25,7 @@ function [huffman_structure] = create_huffman(M, pM, B)
     %base_elem = length(M)^B;
     %create tree 
     %upward branches 0 , downward branches 1 
-    huffman_structure = struct('M' , M, 'B' ,B ,'huffman_structure',h);
+    huffman_structure = struct('M' , M, 'B' ,B ,'huffman_structure',h,'type',[]);
 end
 %basic struct
 function h = huffman_tree(l_s,p_s)    

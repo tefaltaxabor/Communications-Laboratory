@@ -11,6 +11,10 @@ function [output] = huffman_img(huffman_structure, img_width, img_height, input_
             img(i,j) = A_dach;
         end
     end
-    diff_seq = uint8(img(:));
+    diff_seq = uint8(img(:))';
     output = source_encoding.huffman(huffman_structure,diff_seq);
 end
+
+img_width = 512;
+img_height = 512;
+o = huffman_img(huffman_structure,img_width,img_height,lena_in);

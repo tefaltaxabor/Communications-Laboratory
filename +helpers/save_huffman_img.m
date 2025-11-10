@@ -7,10 +7,10 @@ function save_huffmam_img()
         [param.source.image.width, param.source.image.height ])';
     
     %suponiendo q img size(img) = N(zeilen) x M(columns);
-    s = size(img);
-    for i = 1:s(1)
+    %s = size(img);
+    for i = 1:param.source.image.height
         A_prev = img(i,1);
-        for j = 2:s(2)
+        for j = 2:param.source.image.width
             A_dach = mod(img(i,j) - A_prev,256);
             A_prev = img(i,j);
             img(i,j) = A_dach;
@@ -23,7 +23,7 @@ function save_huffmam_img()
     %stosi
     
     counts = accumarray(double(bytes)+1, 1, [256 1]);
-    counts = counts + 1;
+    %counts = counts;
     prob = counts / sum(counts);
     
     %save huffman structure
@@ -33,6 +33,6 @@ function save_huffmam_img()
     %B = 1
     
     huffman_structure = helpers.create_huffman(alphabet,prob,1);
+    huffman_structure.type = 'img';
     save(fullfile('files',output_path), 'huffman_structure');
-
 end

@@ -12,11 +12,13 @@ function save_huffmam_statistic(text_path)
     prob = counts / sum(counts);
     %save huffman structure
     alphabet = char(uint8(0:255)).';
-
-   
+    
+    
 
     %B = 1
     huffman_structure = helpers.create_huffman(alphabet,prob,1);
+    huffman_structure.type = 'txt';
     save(fullfile('files',output_path), 'huffman_structure');
+    
 end
 
