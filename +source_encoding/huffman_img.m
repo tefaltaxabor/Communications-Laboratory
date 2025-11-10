@@ -17,4 +17,4 @@ end
 
 img_width = 512;
 img_height = 512;
-o = huffman_img(huffman_structure,img_width,img_height,lena_in);
+o = huffman_img(param.source_coding.huffman_structure,img_width,img_height,d);

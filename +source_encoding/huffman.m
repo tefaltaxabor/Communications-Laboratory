@@ -45,6 +45,17 @@ function [output] = huffman(huffman_structure, input_seq)
 
     disp(keys(map_global));
     disp(map_global.values)
+    disp('%%%%%%%%%%%%%%%%%%%')
+
+    disp(map_global(uint32(1)))
+    disp(map_global(uint32(6)))
+    disp(map_global(uint32(2)))
+
+    disp(map_global(uint32(162)))
+    
+
+    disp('%%%%%%%%%%%%%%%%%%%')
+    disp('%%%%%%%%%%%%%%%%%%%')
     chunks = cell(1,num_syms);
     idx = 1;
     for k = 1:num_syms
@@ -71,7 +82,11 @@ function [output] = huffman(huffman_structure, input_seq)
             disp(k)
             error('Símbolo no encontrado en el diccionario: "%s"', sym);
         end
-        chunks{k} = map_global(sym);
+        if is_text_type 
+            chunks{k} = map_global(sym);
+        else
+            chunks{k} = map_global(uint32(sym));
+        end
     end
     output = uint8([chunks{:}]);
 end
@@ -84,6 +99,6 @@ function isLeaf = isLeaf(root)
     end
 end
 
-output_1212  = huffman(huffman_structure,diff_seq);
+%output_1212  = huffman(huffman_structure,diff_seq);
 
 

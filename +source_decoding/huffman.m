@@ -21,7 +21,7 @@ function [output] = huffman(huffman_structure,input_seq)
                 node = root;
             else
                 %add code for img
-                decode_c{end+1} = uint8(char(node.s)-'0');
+                decode_c{end+1} = uint8(str2double(node.s));
                 node = root;
             end
         end
@@ -37,4 +37,4 @@ function isLeaf = isLeaf(root)
         isLeaf = 0; 
     end
 end
-o_ = huffman(huffman_structure,output_1212);
+%o_= huffman(huffman_structure,output_1212);
