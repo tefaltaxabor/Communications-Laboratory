@@ -5,15 +5,17 @@ function save_huffmam_img()
     output_path = 'huffman_img.mat';
     img = reshape(param.source.sequence, ...
         [param.source.image.width, param.source.image.height ])';
-    
+    img_rec = img;
     %suponiendo q img size(img) = N(zeilen) x M(columns);
     %s = size(img);
     for i = 1:param.source.image.height
-        A_prev = img(i,1);
+        A_prev = double(img(i,1));
+        img_rec(i,1) = uint8(A_prev);
         for j = 2:param.source.image.width
-            A_dach = mod(img(i,j) - A_prev,256);
-            A_prev = img(i,j);
-            img(i,j) = A_dach;
+            A_curr = double(img(i,j));
+            A_dach = mod(A_curr - A_prev,256);            
+            img_rec(i,j) = uint8(A_dach);
+            A_prev = A_curr;
         end
     end
     
